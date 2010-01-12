@@ -42,7 +42,7 @@ var alertCloser = function () {
       // Register our watcher.  The link to nsIWindowWatcher above will give you more details on
       // what is going on here.
       ww.registerNotification(watcher);
-		},
+    },
 
     // This is a debugging method.  It is called from init(), but should not be run in normal
     // circumstances.  If it is run, you should start firefox on the command line so you can see
