@@ -4,7 +4,7 @@
          xmlns:RDF="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <RDF:Description RDF:about="urn:mozilla:install-manifest"
                    em:id="alert_closer@nd.gov"
-                   em:name="Dan Wanek"
+                   em:name="Alert Closer"
                    em:version="0.1"
                    em:creator="Dan Wanek"
                    em:description="Closes an alert window after a timeout.">
