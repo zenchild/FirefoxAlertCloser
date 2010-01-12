@@ -23,49 +23,49 @@
 
 var alertCloser = function () {
   // var prefManager = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
-	return {
-		init : function () {
+  return {
+    init : function () {
       // See: https://developer.mozilla.org/en/nsIWindowWatcher
-			var ww = Components.classes["@mozilla.org/embedcomp/window-watcher;1"].getService(Components.interfaces.nsIWindowWatcher);
-			var watcher = {
-				observe: function(subject, topic, data) {
-					if (topic == "domwindowopened") {
+      var ww = Components.classes["@mozilla.org/embedcomp/window-watcher;1"].getService(Components.interfaces.nsIWindowWatcher);
+      var watcher = {
+        observe: function(subject, topic, data) {
+          if (topic == "domwindowopened") {
             // Make sure the window is loaded, then call alertClose to make sure we are closing
             // a dialog box.  Otherwise we don't want to close the window.
             subject.addEventListener("load", function() { alertCloser.alertClose(subject); }, false);
-					}
+          }
 
           // This is mainly a debugging method.  It should be commented out for normal use.
-          subject.addEventListener("load", function() { alertCloser.subinfo(subject); }, false);
-				}
-			};
+          //subject.addEventListener("load", function() { alertCloser.subinfo(subject); }, false);
+        }
+      };
       // Register our watcher.  The link to nsIWindowWatcher above will give you more details on
       // what is going on here.
-			ww.registerNotification(watcher);
+      ww.registerNotification(watcher);
 		},
 
     // This is a debugging method.  It is called from init(), but should not be run in normal
     // circumstances.  If it is run, you should start firefox on the command line so you can see
     // the details dumped to STDOUT/STDERR.
     subinfo: function (subject) {
-			dump("SUBJECT typeof: " + typeof(subject) + "\n");
-			dump("SUBJECT location: " + subject.location + "\n");
-			for (var prop in subject) {
-        var inspect_msg = i + "\n" + subject[i]; }
+      dump("SUBJECT typeof: " + typeof(subject) + "\n");
+      dump("SUBJECT location: " + subject.location + "\n");
+      for (var prop in subject) {
+        var inspect_msg = prop + "\n" + subject[prop];
         dump(inspect_msg + "\n");
-      } 
-		},
+      }
+    }, 
 
     // This is a convenience method that exists to determine if the window should be closed or not.
     // There could be a lot more logic here, but for now we are just closing any window whose
     // location property is equal to "chrome://global/content/commonDialog.xul", which is what the
     // alert boxes that I have tested use.
     alertClose: function (subject) {
-			if(subject.location == "chrome://global/content/commonDialog.xul") {
-				window.setTimeout(function() { subject.close(); }, 1000);
-			}
-		}
-	};
+      if(subject.location == "chrome://global/content/commonDialog.xul") {
+        window.setTimeout(function() { subject.close(); }, 1000);
+      }
+    }
+  };
 }();
 
 window.addEventListener("load", alertCloser.init, false);
