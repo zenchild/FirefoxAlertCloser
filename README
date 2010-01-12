@@ -1,0 +1,6 @@
+This is a simple Firefox extension that I use to close unexpected alert boxes while running Selenium tests.  Prior to this the alerts where out of context and Selenium could not control them.  You can see the Selenium-RC FAQ for more information:
+http://wiki.openqa.org/display/SRC/Selenium+RC+FAQ
+
+While watching Jason Huggins' presentation on Hacking Selenium ( http://www.infoq.com/presentations/huggins-hacking-selenium ), he demonstrated a way to close the alerts at the browser layer (XUL).  This method was sent to him by Aaron Boodman of Greasemonkey fame.  I (Dan Wanek) have taken the base of Aaron's code and turned it into a simple Firefox extension.  It has worked for me in all of the instances that I have needed it, but if you are having issues you may need to tweak the alertCloser.alertClose method to make it more general use.
+
+Enjoy!
