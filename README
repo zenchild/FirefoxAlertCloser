@@ -1,6 +1,17 @@
+My blog post on this issue:  http://distributed-frostbite.blogspot.com/2010/02/closing-javascript-alerts-in-selenium.html
+
 This is a simple Firefox extension that I use to close unexpected alert boxes while running Selenium tests.  Prior to this the alerts where out of context and Selenium could not control them.  You can see the Selenium-RC FAQ for more information:
 http://wiki.openqa.org/display/SRC/Selenium+RC+FAQ
 
 While watching Jason Huggins' presentation on Hacking Selenium ( http://www.infoq.com/presentations/huggins-hacking-selenium ), he demonstrated a way to close the alerts at the browser layer (XUL).  This method was sent to him by Aaron Boodman of Greasemonkey fame.  I (Dan Wanek) have taken the base of Aaron's code and turned it into a simple Firefox extension.  It has worked for me in all of the instances that I have needed it, but if you are having issues you may need to tweak the alertCloser.alertClose method to make it more general use.
 
 Enjoy!
+
+
+To create the XPI for installation into Firefox simply change to the "FirefoxAlertCloser" directory and zip up the contents.  For example:
+
+git clone git://github.com/zenchild/FirefoxAlertCloser.git
+cd FirefoxAlertCloser
+zip -r ../alert_closer.xpi . -x ".git/*"
+
+Now just go into Firefox and open the xpi file you created.  I would recommend doing this in a special firefox profile for Selenium testing.
