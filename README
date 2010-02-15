@@ -1,3 +1,5 @@
+Thanks a million to Olle Jonsson (http://github.com/olleolleolle) for adding in all of the Firefox preference additions.
+
 My blog post on this issue:  http://distributed-frostbite.blogspot.com/2010/02/closing-javascript-alerts-in-selenium.html
 
 This is a simple Firefox extension that I use to close unexpected alert boxes while running Selenium tests.  Prior to this the alerts where out of context and Selenium could not control them.  You can see the Selenium-RC FAQ for more information:
