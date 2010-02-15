@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+
+<prefwindow
+     title="Alert Closer Preferences"
+     xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+	<prefpane label="Alert Closer Preferences">
+		<preferences>
+			<preference id="alert-closer-millisbeforeclose" name="extensions.alert_closer.millisbeforeclose" type="int"/>
+		</preferences>
+
+		<groupbox>
+			<caption label="Settings"/>
+			<grid>
+				<columns>
+					<column flex="4"/>
+
+					<column flex="1"/>
+				</columns>
+				<rows>
+					<row>
+						<label control="millisbeforeclose" value="Milliseconds before closing"/>
+						<textbox type="number" increment="1000" id="millisbeforeclose" preference="alert-closer-millisbeforeclose"/>
+					</row>
+				</rows>
+			</grid>
+		</groupbox>	
+
+	</prefpane>
+
+</prefwindow>

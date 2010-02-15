@@ -1,0 +1,1 @@
+pref("extensions.alert_closer.millisbeforeclose", 1000);
