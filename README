@@ -5,13 +5,15 @@ http://wiki.openqa.org/display/SRC/Selenium+RC+FAQ
 
 While watching Jason Huggins' presentation on Hacking Selenium ( http://www.infoq.com/presentations/huggins-hacking-selenium ), he demonstrated a way to close the alerts at the browser layer (XUL).  This method was sent to him by Aaron Boodman of Greasemonkey fame.  I (Dan Wanek) have taken the base of Aaron's code and turned it into a simple Firefox extension.  It has worked for me in all of the instances that I have needed it, but if you are having issues you may need to tweak the alertCloser.alertClose method to make it more general use.
 
+There is a preference you can set: extensions.alert_closer.millisbeforeclose which defaults to 1000.
+
 Enjoy!
 
 
 To create the XPI for installation into Firefox simply change to the "FirefoxAlertCloser" directory and zip up the contents.  For example:
 
-git clone git://github.com/zenchild/FirefoxAlertCloser.git
-cd FirefoxAlertCloser
-zip -r ../alert_closer.xpi . -x ".git/*"
+    git clone git://github.com/zenchild/FirefoxAlertCloser.git
+    cd FirefoxAlertCloser
+    zip -r ../alert_closer.xpi . -x ".git/*"
 
-Now just go into Firefox and open the xpi file you created.  I would recommend doing this in a special firefox profile for Selenium testing.
+Now just go into Firefox and open the xpi file you created.  I would recommend doing this in a special Firefox profile for Selenium testing.

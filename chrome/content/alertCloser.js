@@ -22,7 +22,7 @@
 // OTHER DEALINGS IN THE SOFTWARE.
 
 var alertCloser = function () {
-  // var prefManager = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+  var prefManager = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
   return {
     init : function () {
       // See: https://developer.mozilla.org/en/nsIWindowWatcher
@@ -32,7 +32,7 @@ var alertCloser = function () {
           if (topic == "domwindowopened") {
             // Make sure the window is loaded, then call alertClose to make sure we are closing
             // a dialog box.  Otherwise we don't want to close the window.
-            subject.addEventListener("load", function() { alertCloser.alertClose(subject); }, false);
+            subject.addEventListener("load", function() { alertCloser.alertClose(subject, prefManager.getIntPref("extensions.alert_closer.millisbeforeclose")); }, false);
           }
 
           // This is mainly a debugging method.  It should be commented out for normal use.
@@ -60,9 +60,9 @@ var alertCloser = function () {
     // There could be a lot more logic here, but for now we are just closing any window whose
     // location property is equal to "chrome://global/content/commonDialog.xul", which is what the
     // alert boxes that I have tested use.
-    alertClose: function (subject) {
+    alertClose: function (subject, millisecondsBeforeClosing) {
       if(subject.location == "chrome://global/content/commonDialog.xul") {
-        window.setTimeout(function() { subject.close(); }, 1000);
+        window.setTimeout(function() { subject.close(); }, millisecondsBeforeClosing);
       }
     }
   };

@@ -10,13 +10,15 @@
                    em:description="Closes an alert window after a timeout.">
     <em:contributor>Jason Huggins</em:contributor>
     <em:contributor>Aaron Boodman</em:contributor>
+    <em:contributor>Olle Jonsson</em:contributor>
     <em:targetApplication RDF:resource="rdf:#$jjepa1"/>
     <em:file RDF:resource="urn:mozilla:extension:file:"/>
+    <em:optionsURL>chrome://alert_closer/content/options.xul</em:optionsURL>
   </RDF:Description>
   <RDF:Description RDF:about="rdf:#$jjepa1"
                    em:id="{ec8030f7-c20a-464f-9b0e-13a3a9e97384}"
                    em:minVersion="2.0.*"
-                   em:maxVersion="3.5.*" />
+                   em:maxVersion="3.6.*" />
   <RDF:Description RDF:about="urn:mozilla:extension:file:"
                    em:package="content/"
                    em:skin="skin/"
